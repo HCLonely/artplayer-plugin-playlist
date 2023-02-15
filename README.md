@@ -13,7 +13,7 @@ npm install artplayer-playlist --save
 ### CDN
 
 ```text
-https://cdn.jsdelivr.net/npm/artplayer-plugin-playlist/dist/artplayer-plugin-playlist.min.js
+https://cdn.jsdelivr.net/npm/artplayer-playlist/dist/artplayer-plugin-playlist.min.js
 ```
 
 ## 使用
