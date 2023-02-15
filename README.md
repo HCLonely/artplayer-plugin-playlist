@@ -31,6 +31,7 @@ var art = new Artplayer({
       console.log('Video Changed');
     },
     autoNext: true, // 自动播放下一P, 默认false
+    showText: false, // 在控制栏显示文本，否则显示图标，默认为false
     playlist: [ // 播放列表
       { // 每一P的视频信息，接受title和url参数。如果rebuildPlayer=false, 则接受ArtPlayer基础参数https://artplayer.org/document/start/option.html
         title: 'Ep.1 ...',
@@ -41,7 +42,7 @@ var art = new Artplayer({
         url: 'https://abc.xyz/video-2.mp4'
       },
       {
-        name: 'Ep.3 ...',
+        title: 'Ep.3 ...',
         url: 'https://abc.xyz/video-..mp4'
       }
     ]

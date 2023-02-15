@@ -12,23 +12,22 @@ function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _ty
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 var artplayerPlaylist = function artplayerPlaylist(options) {
   return function (art) {
+    // 更新i18n
+    var addedI18n = {
+      'zh-cn': {
+        playlist: '播放列表'
+      },
+      en: {
+        playlist: 'Playlist'
+      }
+    };
+    art.i18n.update(addedI18n);
+
     // 更换分集视频
     var changeVideo = function changeVideo(art, index) {
       if (!options.playlist[index]) {
         return;
       }
-
-      // 更新i18n
-      var addedI18n = {
-        'zh-cn': {
-          playlist: '播放列表'
-        },
-        en: {
-          playlist: 'Playlist'
-        }
-      };
-      art.i18n.update(addedI18n);
-
       // 获取artplayer配置
       var artOptions = art.option;
       var newArtplayer = art;
@@ -64,29 +63,33 @@ var artplayerPlaylist = function artplayerPlaylist(options) {
         changeVideo(art, currentEp + 1);
       });
     }
+    var icon = '<i class="art-icon"><svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="22" height="22"><path d="M810.666667 384H85.333333v85.333333h725.333334V384z m0-170.666667H85.333333v85.333334h725.333334v-85.333334zM85.333333 640h554.666667v-85.333333H85.333333v85.333333z m640-85.333333v256l213.333334-128-213.333334-128z" fill="#ffffff"></path></svg></i>';
 
     // 添加播放列表
     art.controls.add({
       name: 'playlist',
       position: 'right',
-      html: art.i18n.get('playlist'),
+      html: options.showText ? art.i18n.get('playlist') : icon,
       style: {
         padding: '0 10px'
       },
       selector: options.playlist.map(function (videoInfo, index) {
         return {
           html: "".concat(index + 1, ". ").concat(videoInfo.title || "Ep.".concat(index + 1)),
+          style: {
+            textAlign: 'left'
+          },
           index: index,
           "default": currentEp === index
         };
       }),
       onSelect: function onSelect(item) {
         changeVideo(art, item.index);
-        return art.i18n.get('playlist');
+        return options.showText ? art.i18n.get('playlist') : icon;
       }
     });
     return {
-      name: 'playlist'
+      name: 'artplayerPlaylist'
     };
   };
 };
