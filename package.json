@@ -1,0 +1,25 @@
+{
+  "name": "artplayer-plugin-playlist",
+  "version": "1.0.0",
+  "description": "artplayer播放列表插件",
+  "main": "dist/artplayer-plugin-playlist.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src/artplayer-plugin-playlist.js --out-file dist/artplayer-plugin-playlist.js && browserify dist/artplayer-plugin-playlist.js -o dist/artplayer-plugin-playlist.browser.js && terser dist/artplayer-plugin-playlist.browser.js --compress --mangle -o dist/artplayer-plugin-playlist.min.js"
+  },
+  "keywords": [
+    "artplayer"
+  ],
+  "author": "HCLonely",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "eslint": "^8.34.0",
+    "terser": "^5.16.3"
+  },
+  "devDependencies": {
+    "browserify": "^17.0.0"
+  }
+}
