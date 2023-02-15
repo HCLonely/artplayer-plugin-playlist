@@ -19,11 +19,13 @@ https://cdn.jsdelivr.net/npm/artplayer-plugin-playlist/dist/artplayer-plugin-pla
 ## 使用
 
 ```javascript
+import { artplayerPlaylist } from 'artplayer-plugin-playlist'; // Nodejs ES6
+
 var art = new Artplayer({
   container: '.artplayer-app',
   url: 'https://abc.xyz/video-1.mp4',
   title: 'Ep.1 ...',
-  plugins: [playlist({
+  plugins: [artplayerPlaylist({
     rebuildPlayer: false, // 换P时重建播放器，默认false
     onchanged: (art) => { // 换P后的回调函数
       console.log('Video Changed');
