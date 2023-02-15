@@ -1,4 +1,4 @@
-# artplayer-plugin-playlist
+# artplayer-playlist
 
 [ArtPlayer](https://github.com/zhw2590582/ArtPlayer)播放列表插件。
 
@@ -7,7 +7,7 @@
 ### nodejs
 
 ```shell
-npm install artplayer-plugin-playlist --save
+npm install artplayer-playlist --save
 ```
 
 ### CDN
@@ -19,7 +19,7 @@ https://cdn.jsdelivr.net/npm/artplayer-plugin-playlist/dist/artplayer-plugin-pla
 ## 使用
 
 ```javascript
-import { artplayerPlaylist } from 'artplayer-plugin-playlist'; // Nodejs ES6
+import { artplayerPlaylist } from 'artplayer-playlist'; // Nodejs ES6
 
 var art = new Artplayer({
   container: '.artplayer-app',
