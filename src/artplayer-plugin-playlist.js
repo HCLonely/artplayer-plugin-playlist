@@ -15,6 +15,7 @@ const artplayerPlaylist = (options) => (art) => {
     if (!options.playlist[index]) {
       return;
     }
+
     // 获取artplayer配置
     const artOptions = art.option;
 
@@ -28,7 +29,8 @@ const artplayerPlaylist = (options) => (art) => {
         ...artOptions,
         ...options.playlist[index],
         autoplay: options.autoNext ?? artOptions.autoplay,
-        i18n: addedI18n
+        i18n: addedI18n,
+        id: `${artOptions.id}-${index === 0 ? '' : index}`
       });
     } else {
       art.switchUrl(options.playlist[index].url, options.playlist[index].title);
@@ -43,7 +45,7 @@ const artplayerPlaylist = (options) => (art) => {
     }
   };
 
-  // 自动播放下一集
+  // 自动播放下一P
   const currentEp = options.playlist.findIndex((videoInfo) => videoInfo.url === art.option.url);
   if (options.autoNext && currentEp < options.playlist.length) {
     art.on('video:ended', () => {
@@ -53,7 +55,7 @@ const artplayerPlaylist = (options) => (art) => {
 
   const icon = '<i class="art-icon"><svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="22" height="22"><path d="M810.666667 384H85.333333v85.333333h725.333334V384z m0-170.666667H85.333333v85.333334h725.333334v-85.333334zM85.333333 640h554.666667v-85.333333H85.333333v85.333333z m640-85.333333v256l213.333334-128-213.333334-128z" fill="#ffffff"></path></svg></i>';
 
-  // 添加播放列表
+  // 添加播放列表控件
   art.controls.add({
     name: 'playlist',
     position: 'right',

@@ -1,6 +1,6 @@
 {
   "name": "artplayer-playlist",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "artplayer播放列表插件",
   "main": "dist/artplayer-plugin-playlist.js",
   "scripts": {
