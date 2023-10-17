@@ -34,7 +34,7 @@ const artplayerPlaylist = (options) => (art) => {
       });
     } else {
       art.switchUrl(options.playlist[index].url, options.playlist[index].title);
-      if (artOptions.autoplay) {
+      if (options.autoNext ?? artOptions.autoplay) {
         art.play();
       }
     }

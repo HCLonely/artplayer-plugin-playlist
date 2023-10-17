@@ -45,8 +45,9 @@ var artplayerPlaylist = function artplayerPlaylist(options) {
           id: "".concat(artOptions.id, "-").concat(index === 0 ? '' : index)
         }));
       } else {
+        var _options$autoNext2;
         art.switchUrl(options.playlist[index].url, options.playlist[index].title);
-        if (artOptions.autoplay) {
+        if ((_options$autoNext2 = options.autoNext) !== null && _options$autoNext2 !== void 0 ? _options$autoNext2 : artOptions.autoplay) {
           art.play();
         }
       }
